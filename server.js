@@ -15,13 +15,13 @@ const Db = process.env.Db;
 app.use(bodyParser.json());
 
 // Connect to MongoDBs
-mongoose.connect(Db, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+mongoose.connect(Db)
+.then(()=>{
+    console.log("Database Connection Successfully!!")
 })
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
-
+.catch((error)=>{
+    console.log(error);
+})
 // Define a schema and model for resume
 const resumeSchema = new mongoose.Schema({
   name: String,
