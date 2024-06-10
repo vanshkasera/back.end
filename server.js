@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const userRoutes = require('./routes/userRoutes');
 const pdfRoutes = require('./routes/pdfRoutes');
@@ -13,6 +14,9 @@ const Db = process.env.Db;
 
 // Middleware
 app.use(bodyParser.json());
+
+// enable Cors for all routes
+app.use(cors());
 
 // Connect to MongoDBs
 mongoose.connect(Db)
